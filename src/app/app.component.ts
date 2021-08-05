@@ -100,10 +100,10 @@ export class AppComponent {
       .map(Number)
       .filter(item => item % 2 === 0)
       .reduce((acc, value) => acc + value);
-    console.log(ej1);
+    console.log('Ejercicio 1: ', ej1);
 
     //Ejercicio 2, filtrar los numeros impares y mostrarlos como cadena
     const ej2 = [1, 2, 3, 4, 5, 6].filter(item => item % 2 === 1).join(', ');
-    console.log(ej2);
+    console.log('Ejercicio 2:', ej2);
   }
 }
