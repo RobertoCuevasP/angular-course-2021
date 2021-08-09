@@ -58,7 +58,7 @@ export class AppComponent {
       value: 'ricardo',
       key: 'RPC'
     };
-    console.log(Object.entries(testEntries));
+    //console.log(Object.entries(testEntries));
 
     //keys, parecido a entries, pero solo trabaja con los keys
     const testKeys = {
@@ -72,7 +72,7 @@ export class AppComponent {
       value: 'ricardo',
       key: 'RPC'
     };
-    console.log(Object.values(testValues));
+    //console.log(Object.values(testValues));
 
     //Variable let, es una variable que solo se ejecuta dentro del entorno o contexto en el que se encuentra declarado o definido
     let testLet;
@@ -110,5 +110,9 @@ export class AppComponent {
 
   printDataRobertoComp(event: any) {
     console.log('Roberto Comp: ', event);
+  }
+
+  printFullName(event) {
+    console.log('Full text: ', event);
   }
 }
