@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular2021';
+  myStatus = 'my new status';
 
   constructor() {
     //Opera y recorre todo el arreglo, luego devuelve el array resultado
@@ -105,5 +106,9 @@ export class AppComponent {
     //Ejercicio 2, filtrar los numeros impares y mostrarlos como cadena
     const ej2 = [1, 2, 3, 4, 5, 6].filter(item => item % 2 === 1).join(', ');
     console.log('Ejercicio 2:', ej2);
+  }
+
+  printDataRobertoComp(event: any) {
+    console.log('Roberto Comp: ', event);
   }
 }

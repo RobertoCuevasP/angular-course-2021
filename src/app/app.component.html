@@ -1,5 +1,6 @@
 <p>App component</p>
 
-<roberto-comp status="busy"></roberto-comp>
+<roberto-comp [status]="myStatus" (onSendData)="printDataRobertoComp($event)">
+</roberto-comp>
 
 <app-test2></app-test2>
