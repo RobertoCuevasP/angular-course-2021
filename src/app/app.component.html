@@ -5,6 +5,11 @@
 
 <app-test2 name="Roberto" lastName="Cuevas" (onSendFullName)="printFullName($event)"></app-test2>
 
-<app-test3>
-  <p>Test 3 using Banana Box</p>
-</app-test3>
+<input type="text" [(ngModel)]="myStatus">
+
+
+<button (click)="sw = !sw">Show Test 3</button>
+<div *ngIf="sw === true">
+  <app-test3 [test]='myStatus'>
+  </app-test3>
+</div>

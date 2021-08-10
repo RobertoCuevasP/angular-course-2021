@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular2021';
   myStatus = 'my new status';
+  sw = true;
 
   constructor() {
     //Opera y recorre todo el arreglo, luego devuelve el array resultado
