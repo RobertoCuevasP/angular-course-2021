@@ -9,7 +9,63 @@
 
 
 <button (click)="sw = !sw">Show Test 3</button>
-<div *ngIf="sw === true">
+<div [hidden]="sw">
   <app-test3 [test]='myStatus'>
   </app-test3>
 </div>
+
+<ul>
+  <li *ngFor="let item of ['first', 'second', 'third']; let i = index;">{{item}} {{i}}</li>
+</ul>
+<input type="text" [(ngModel)]="color">
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase=" 'red' ">Red</li>
+  <li *ngSwitchCase=" 'yellow' ">Yellow</li>
+  <li *ngSwitchCase=" 'blue' ">Blue</li>
+  <li *ngSwitchDefault>Default</li>
+</ul>
+
+<ul>
+  <li *ngFor="let item of ['first', 'second', 'third']; let i = index;">
+
+    <roberto-comp [status]="color" (onSendData)="printDataRobertoComp($event)">
+    </roberto-comp>
+
+  </li>
+</ul>
+
+<!--
+
+  <p>----------------------</p>
+  <span *ngFor="let item of ['first', 'second', 'thrid']; let i = index;">
+    <roberto-comp
+    *ngIf="item !== 'first'"
+    [status]="item" 
+    (onSendData)="printDataRobertoComp($event)">
+    </roberto-comp>
+  </span>
+  <p>-------------------------------</p>
+
+<input type="text" [(ngModel)]="color">
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'red'">
+  <roberto-comp
+    [status]="color" 
+    (onSendData)="printDataRobertoComp($event)">
+    </roberto-comp>
+  </li>
+  <li *ngSwitchCase="'yellow'">
+  <app-test3 
+  [name]="color">
+  </app-test3></li>
+  <li *ngSwitchCase="'green'">green</li>
+  <li *ngSwitchDefault>Default Orange</li>
+</ul>
+
+-->
+
+<p>------------------------------------------------</p>
+
+<li *ngFor="let fullName of people;">{{fullName.name}} {{fullName.lastName}}
+</li>
+<p>------------------------------------------------</p>

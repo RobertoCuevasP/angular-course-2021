@@ -9,6 +9,13 @@ export class AppComponent {
   title = 'angular2021';
   myStatus = 'my new status';
   sw = true;
+  color: string;
+  people = [
+    { name: 'Roberto', lastName: 'Cuevas' },
+    { name: 'Rossangela', lastName: 'Trigo' },
+    { name: 'Cesar', lastName: 'Illanes' },
+    { name: 'Raisa', lastName: 'Silva' }
+  ];
 
   constructor() {
     //Opera y recorre todo el arreglo, luego devuelve el array resultado
