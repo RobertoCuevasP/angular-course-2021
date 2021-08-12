@@ -3,16 +3,8 @@
 <roberto-comp [status]="myStatus" (onSendData)="printDataRobertoComp($event)">
 </roberto-comp>
 
-<app-test2 name="Roberto" lastName="Cuevas" (onSendFullName)="printFullName($event)"></app-test2>
 
 <input type="text" [(ngModel)]="myStatus">
-
-
-<button (click)="sw = !sw">Show Test 3</button>
-<div [hidden]="sw">
-  <app-test3 [test]='myStatus'>
-  </app-test3>
-</div>
 
 <ul>
   <li *ngFor="let item of ['first', 'second', 'third']; let i = index;">{{item}} {{i}}</li>
@@ -69,3 +61,28 @@
 <li *ngFor="let fullName of people;">{{fullName.name}} {{fullName.lastName}}
 </li>
 <p>------------------------------------------------</p>
+
+
+
+<ng-template #myVarElse>
+  <p>It is my template</p>
+</ng-template>
+
+<app-test2 name="Roberto" lastName="Cuevas" (onSendFullName)="printFullName($event)">
+
+  <p>Mi propio contenido</p>
+  <button>Mi botton</button>
+
+</app-test2>
+
+
+
+<div *ngIf="sw else myVarElse">
+  <app-test3 [test]='myStatus'>
+  </app-test3>
+</div>
+<button (click)="sw = !sw">Show Test 3</button>
+<button (click)="sw = !sw">Show Test3 Container</button>
+<ng-container *ngIf="sw">
+  <p>NG Container</p>
+</ng-container>
