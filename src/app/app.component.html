@@ -116,3 +116,28 @@
   }">
   My div with ngClass
 </div>
+
+<!--Homework 4 11/08/2021-->
+<p>-------------------------</p>
+
+<ng-container *ngFor="let item of [1, 2, 3, 4]">
+  <div *ngIf="item % 2 === 0 else impar">
+    <p [ngStyle]="{
+      'background' : 'red',
+      'border' : '5px gray solid'
+      }">
+      {{item}}
+    </p>
+
+  </div>
+  <ng-template #impar>
+    <p [ngStyle]="{
+      'background' : 'green',
+      'border' : '5px gray solid'
+    }">
+      {{item}}
+    </p>
+
+  </ng-template>
+
+</ng-container>
