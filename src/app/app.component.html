@@ -86,3 +86,33 @@
 <ng-container *ngIf="sw">
   <p>NG Container</p>
 </ng-container>
+
+
+<input type="string" [(ngModel)]="color">
+<p [style.color]="color">
+  My p with styles
+</p>
+
+
+<p [ngStyle]="{
+  'background' : color,
+  'border' : '5px gray solid'
+  }">
+  My p with styles
+</p>
+
+<p>-------------------------</p>
+
+<div [class.est2]="color === 'hola'">
+  My div with class
+</div>
+
+<p>-------------------------</p>
+
+<div [ngClass]="{
+    'est1': color === 'holaRojo',
+    'est2': color === 'holaVerde',
+    'est3': color === 'holaYellow'
+  }">
+  My div with ngClass
+</div>
