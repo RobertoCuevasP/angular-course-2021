@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BehaviorSubject, of, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
@@ -21,6 +21,11 @@ export class AppComponent {
   video = 1;
   personASub: Subscription;
   tiktok = new BehaviorSubject(this.video);
+
+  @ViewChild('myDiv1') myDiv1: ElementRef;
+  @ViewChild('myDiv2') myDiv2: ElementRef;
+  @ViewChild('myCompRoberto') myCompRoberto: any;
+  
   constructor() {
     //Person A
     this.personASub = this.tiktok
@@ -158,5 +163,13 @@ export class AppComponent {
 
   testOutput(event: any) {
     console.log('Test: ', event);
+  }
+
+  onShowLocalVars() {
+    console.log(this.myDiv1, this.myDiv2, this.myCompRoberto);
+
+    this.myCompRoberto.onClickTest();
+
+    this.myDiv2.nativeElement.value = 'Roberto';
   }
 }
