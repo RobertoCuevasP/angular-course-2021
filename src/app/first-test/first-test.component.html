@@ -35,7 +35,7 @@
       <br> moneyType: {{item.moneyType | uppercase}},
       <br> mineType: {{item.mineType}},
       <br> miner: {{item.miner}}
-      <br> <button>Mine</button>
+      <br> <button (click)="transaction(item)">Mine</button>
     </div>
   </div>
 
@@ -50,9 +50,7 @@
       <br> miner: {{item.miner}}
       <br>
       <div *ngIf="item.miner > 20">
-        <button>
-          Mine
-        </button>
+        <button (click)="transaction(item)">Mine</button>
       </div>
     </div>
   </ng-template>

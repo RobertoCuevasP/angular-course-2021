@@ -110,4 +110,18 @@ export class FirstTestComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  transaction(person: JSON) {
+    if (person.moneyType === 'btc') {
+      this.wallets.find(item => item.wallet === person.from).btc -=
+        person.quantity;
+      this.wallets.find(item => item.wallet === person.to).btc +=
+        person.quantity;
+    } else {
+      this.wallets.find(item => item.wallet === person.from).eth -=
+        person.quantity;
+      this.wallets.find(item => item.wallet === person.to).eth +=
+        person.quantity;
+    }
+  }
 }
