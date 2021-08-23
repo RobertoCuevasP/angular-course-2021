@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,7 @@ export class AppComponent {
   title = 'angular2021';
   myStatus = 'my new status';
   sw = true;
-  color: string;
+  color: string | undefined;
   people = [
     { name: 'Roberto', lastName: 'Cuevas' },
     { name: 'Rossangela', lastName: 'Trigo' },
@@ -17,7 +19,23 @@ export class AppComponent {
     { name: 'Raisa', lastName: 'Silva' }
   ];
 
+  tiktok = of([1, 2, 3, 4, 5]);
   constructor() {
+    //Person A
+    this.tiktok.pipe(map(s => s.join('-'))).subscribe(v => {
+      console.log('Person A Video ', v);
+    });
+
+    //Person B
+    this.tiktok.pipe(filter((v: any) => v[0] % 2 === 1)).subscribe(v => {
+      console.log('Person B Video ', v);
+    });
+
+    //Person C
+    this.tiktok.subscribe(v => {
+      console.log('Person C Video  ', v);
+    });
+    /*
     //Opera y recorre todo el arreglo, luego devuelve el array resultado
     const testMap = [1, 2, 3, 4, 5, 6].map(number => number * 2);
     console.log(testMap);
@@ -114,13 +132,16 @@ export class AppComponent {
     //Ejercicio 2, filtrar los numeros impares y mostrarlos como cadena
     const ej2 = [1, 2, 3, 4, 5, 6].filter(item => item % 2 === 1).join(', ');
     console.log('Ejercicio 2:', ej2);
+    */
   }
 
   printDataRobertoComp(event: any) {
     console.log('Roberto Comp: ', event);
   }
 
-  printFullName(event) {
+  printFullName(event: any) {
     console.log('Full text: ', event);
   }
+
+  onAddVideo() {}
 }

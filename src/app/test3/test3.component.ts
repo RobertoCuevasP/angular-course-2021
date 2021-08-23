@@ -26,15 +26,15 @@ export class Test3Component
     AfterViewChecked,
     AfterContentInit,
     AfterContentChecked {
-  name;
-  lastname;
+  name: string | undefined;
+  lastname: string | undefined;
 
   @Input() test;
 
   constructor() {
     console.log('Constructor');
   }
-
+  /*
   ngOnInit() {
     console.log('On init');
   }
@@ -70,4 +70,5 @@ export class Test3Component
   fullname(event) {
     console.log('Fullname:  ', this.name + ' ' + this.lastname);
   }
+  */
 }
