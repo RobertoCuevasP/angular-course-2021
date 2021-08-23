@@ -48,8 +48,13 @@
       <br> moneyType: {{item.moneyType}},
       <br> mineType: {{item.mineType}},
       <br> miner: {{item.miner}}
-      <br> <button>Mine</button>
+      <br>
+      <div *ngIf="item.miner > 20">
+        <button>
+          Mine
+        </button>
+      </div>
     </div>
   </ng-template>
-  
+
 </ng-container>
