@@ -25,7 +25,8 @@ export class AppComponent {
   @ViewChild('myDiv1') myDiv1: ElementRef;
   @ViewChild('myDiv2') myDiv2: ElementRef;
   @ViewChild('myCompRoberto') myCompRoberto: any;
-  
+  @ViewChild('homeworkDiv') homeworkDiv: ElementRef;
+
   constructor() {
     //Person A
     this.personASub = this.tiktok
@@ -166,10 +167,12 @@ export class AppComponent {
   }
 
   onShowLocalVars() {
-    console.log(this.myDiv1, this.myDiv2, this.myCompRoberto);
+    console.log(this.myDiv1, this.myDiv2, this.myCompRoberto, this.homeworkDiv);
 
     this.myCompRoberto.onClickTest();
 
     this.myDiv2.nativeElement.value = 'Roberto';
+
+    this.homeworkDiv.nativeElement.style.border = '5px gray solid';
   }
 }
