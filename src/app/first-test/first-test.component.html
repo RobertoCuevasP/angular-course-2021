@@ -28,7 +28,7 @@
 <ng-container *ngFor="let item of transactions;">
   <div *ngIf="item.mineType === 'PoW' else type">
     <div style="background-color:yellow ">
-      date: {{item.date}},
+      date: {{item.date  <!-- | date -->}},
       <br> from: {{item.from}},
       <br> to: {{item.to}},
       <br> quantity: {{item.quantity}},
@@ -41,7 +41,8 @@
 
   <ng-template #type>
     <div style="background-color:green ">
-      date: {{item.date}},
+      date: {{item.date
+      <!-- | date -->}},
       <br> from: {{item.from}},
       <br> to: {{item.to}},
       <br> quantity: {{item.quantity}},

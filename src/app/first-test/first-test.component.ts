@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-first-test',
   templateUrl: './first-test.component.html',
   styleUrls: ['./first-test.component.css']
 })
-export class FirstTestComponent implements OnInit {
+export class FirstTestComponent implements DoCheck {
   wallets = [
     { wallet: 'MARIA123', name: 'maria', eth: 0, btc: 2 },
     { wallet: 'JUAN123', name: 'juan', eth: 5, btc: 0 },
@@ -107,21 +107,25 @@ export class FirstTestComponent implements OnInit {
     }
   ];
 
+  totalEth: number = 0;
+  totalbtc: number = 0;
+
   constructor() {}
 
-  ngOnInit() {}
-
   transaction(person: JSON) {
+    const auxFrom = this.wallets.find(item => item.wallet === person.from);
+    const auxTo = this.wallets.find(item => item.wallet === person.to);
+
     if (person.moneyType === 'btc') {
-      this.wallets.find(item => item.wallet === person.from).btc -=
-        person.quantity;
-      this.wallets.find(item => item.wallet === person.to).btc +=
-        person.quantity;
+      auxFrom.btc -= person.quantity;
+      auxTo.btc += person.quantity;
     } else {
-      this.wallets.find(item => item.wallet === person.from).eth -=
-        person.quantity;
-      this.wallets.find(item => item.wallet === person.to).eth +=
-        person.quantity;
+      auxFrom.eth -= person.quantity;
+      auxTo.eth += person.quantity;
     }
+
+    /*this.transactions = this.transactions.forEach((element, index) => {
+      if (element.from === person.from) this.transactions.splice(index, 1);
+    });*/
   }
 }
