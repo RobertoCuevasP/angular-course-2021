@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { Directive1Directive } from './directive1.directive';
 import { Directive2Directive } from './directive2.directive';
+import { FirstTestComponent } from './first-test/first-test.component';
 import { CoreModule } from './HomeworkModules/core/core.module';
 import { LayoutModule } from './HomeworkModules/layout/layout.module';
 import { AdminModule } from './page/admin/admin.module';
@@ -22,7 +23,8 @@ import { Test3Component } from './test3/test3.component';
     Test2Component,
     Test3Component,
     Directive1Directive,
-    Directive2Directive
+    Directive2Directive,
+    FirstTestComponent
   ],
   imports: [
     BrowserModule,
