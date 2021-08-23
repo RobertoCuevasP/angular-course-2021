@@ -15,13 +15,17 @@ export class Directive1Directive {
 
   @Output() outputTestDirective = new EventEmitter<any>(null);
 
+  colorBananaBox: string;
+
   @HostListener('click') hostListenerOnClick() {
     this.element.nativeElement.style.backgroundColor = this.colorDirective;
   } //'click' para que funcione solo dentro el elemento que use la directiva, 'window:click' para toda la pantalla
 
   @HostListener('mouseleave') hostListenerOnMouseLeave() {
-    this.setBackgroundColor('green');
-    this.outputTestDirective.emit('Test output works');
+    this.setBackgroundColor(this.colorBananaBox);
+    this.outputTestDirective.emit(
+      'Test output works, color: ' + this.colorBananaBox
+    );
   }
 
   @HostListener('mouseenter') hostListenerOnMouseEnter() {
