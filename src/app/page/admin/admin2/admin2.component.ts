@@ -2,14 +2,20 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-admin2',
-  templateUrl: './admin2.component.html',
-  styleUrls: ['./admin2.component.css']
+  template: `
+    <p>
+      admin2 works!
+    </p>
+
+    <button (click)="testParams('Roberto', 'Cuevas')">Test</button>
+  `
 })
 export class Admin2Component implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  public testParams(name: string, lastname: string): string {
+    return name + ' ' + lastname;
   }
-
 }

@@ -1,0 +1,9 @@
+:host {
+  background-color: pink;
+  border: 20px green solid;
+  position: absolute;
+}
+
+::ng-deep div {
+  padding: 30px;
+}

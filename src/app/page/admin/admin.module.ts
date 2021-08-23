@@ -7,6 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   imports: [CommonModule, SharedModule],
   declarations: [Admin1Component, Admin2Component],
-  exports: [Admin1Component]
+  exports: [Admin1Component, Admin2Component]
 })
 export class AdminModule {}
