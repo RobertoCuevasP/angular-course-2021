@@ -155,4 +155,8 @@ export class AppComponent {
     this.personASub.unsubscribe();
     console.log('Person A se desuscribe');
   }
+
+  testOutput(event: any) {
+    console.log('Test: ', event);
+  }
 }
