@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Votacion1Component } from './votacion1/votacion1.component';
 import { Votacion2Component } from './votacion2/votacion2.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { LugarModule } from '../lugar/lugar.module';
 
 @NgModule({
