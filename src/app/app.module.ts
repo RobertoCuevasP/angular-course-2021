@@ -4,6 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AdminComponent } from './ComponentNavigation/admin/admin.component';
+import { Admin1Component } from './ComponentNavigation/admin/admin1/admin1.component';
+import { Admin2Component } from './ComponentNavigation/admin/admin2/admin2.component';
+import { HomeComponent } from './ComponentNavigation/home/home.component';
+import { Home1Component } from './ComponentNavigation/home/home1/home1.component';
+import { Home2Component } from './ComponentNavigation/home/home2/home2.component';
 import { Directive1Directive } from './directive1.directive';
 import { Directive2Directive } from './directive2.directive';
 import { CoreModule } from './HomeworkModules/core/core.module';
@@ -38,6 +44,22 @@ const routes: Routes = [
   {
     path: 'view3',
     loadChildren: () => import('./view3/view3.module').then(m => m.View3Module)
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      { path: 'admin1', component: Admin1Component },
+      { path: 'admin2', component: Admin2Component }
+    ]
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [
+      { path: 'home1', component: Home1Component },
+      { path: 'home2', component: Home2Component }
+    ]
   }
 ];
 
@@ -52,7 +74,13 @@ const routes: Routes = [
     View1Component,
     View1sub1Component,
     View1sub2Component,
-    View2Component
+    View2Component,
+    AdminComponent,
+    Admin1Component,
+    Admin2Component,
+    HomeComponent,
+    Home1Component,
+    Home2Component
   ],
   imports: [
     BrowserModule,
