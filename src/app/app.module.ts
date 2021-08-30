@@ -10,6 +10,9 @@ import { LayoutModule } from './HomeworkModules/layout/layout.module';
 import { AdminModule } from './page/admin/admin.module';
 import { BuyModule } from './page/buy/buy.module';
 import { HomeModule } from './page/home/home.module';
+import { ImpurePipe } from './shared/pipes/impure.pipe';
+import { PurePipe } from './shared/pipes/pure.pipe';
+import { SharedModule } from './shared/shared.module';
 import { Module1Module } from './test1/module1/module1.module';
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
@@ -31,7 +34,8 @@ import { Test3Component } from './test3/test3.component';
     AdminModule,
     BuyModule,
     CoreModule,
-    LayoutModule
+    LayoutModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
