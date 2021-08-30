@@ -29,6 +29,8 @@ export class AppComponent {
   }
 
   onGoView2FromTs(): void {
-    this.router.navigate(['view2', this.id, 'sub', 17]);
+    this.router.navigate(['view2', this.id, 'sub', 17], {
+      queryParams: { name: 'maria', lastname: 'gutierrez' }
+    });
   }
 }
