@@ -4,3 +4,18 @@
 <p>Impure: {{ data | impure}}</p>
 
 <button (click)="data.push(10)">Add</button>
+<p></p>
+<button routerLink="view1"
+        routerLinkActive="active-router">
+  View 1
+</button>
+<button routerLink="view2"
+        routerLinkActive="active-router">
+View 2
+</button>
+
+<div style="border: 4px red solid">
+  <router-outlet>
+
+  </router-outlet>
+</div>
