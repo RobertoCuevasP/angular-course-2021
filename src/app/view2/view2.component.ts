@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view2',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view2.component.css']
 })
 export class View2Component implements OnInit {
+  constructor(private router: ActivatedRoute) {}
 
-  constructor() { }
+  ngOnInit(): void {
+    /this.router.params.subscribe(p => {
+      console.log('Params', p);
+    });
 
-  ngOnInit() {
+    //console.log('snapshot', this.router.snapshot.params);
   }
-
 }

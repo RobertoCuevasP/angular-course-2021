@@ -5,11 +5,13 @@
 
 <button (click)="data.push(10)">Add</button>
 <p></p>
+
+<button (click)="onGoView2FromTs()">GO VIEW FROM TS</button>
 <button routerLink="view1"
         routerLinkActive="active-router">
   View 1
 </button>
-<button routerLink="view2"
+<button routerLink="view2/1/sub/34"
         routerLinkActive="active-router">
 View 2
 </button>
@@ -31,7 +33,7 @@ Admin
 
 <button routerLink="home"
         routerLinkActive="active-router">
-Hom
+Home
 </button>
 
 <div style="border: 4px red solid">

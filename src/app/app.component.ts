@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, of, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
@@ -8,9 +9,10 @@ import { filter, map } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  id = 3;
   data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  constructor() {
+  constructor(private router: Router) {
     this.pure(2, 3);
     this.impure(2, 3);
   }
@@ -24,5 +26,9 @@ export class AppComponent {
     const c = Math.random();
     console.log(a + b + c);
     return a + b + c;
+  }
+
+  onGoView2FromTs(): void {
+    this.router.navigate(['view2', this.id, 'sub', 17]);
   }
 }
