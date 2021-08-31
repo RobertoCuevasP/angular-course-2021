@@ -29,46 +29,45 @@ export class Test3Component
   name: string | undefined;
   lastname: string | undefined;
 
-  @Input() test;
+  @Input() test: any;
 
   constructor() {
-    console.log('Constructor');
+    //console.log('Constructor');
   }
-  /*
+
   ngOnInit() {
-    console.log('On init');
+    //console.log('On init');
   }
 
   ngOnChanges() {
-    console.log('On changes');
+    //console.log('On changes');
   }
 
   ngDoCheck() {
-    console.log('Do check');
+    //console.log('Do check');
   }
 
   ngOnDestroy() {
-    console.log('On Destroy');
+    //console.log('On Destroy');
   }
 
   ngAfterContentChecked() {
-    console.log('Content Checked');
+    //console.log('Content Checked');
   }
 
   ngAfterViewChecked() {
-    console.log('View Checked');
+    //console.log('View Checked');
   }
 
   ngAfterContentInit() {
-    console.log('Content init');
+    //console.log('Content init');
   }
 
   ngAfterViewInit() {
-    console.log('View Init');
+    //console.log('View Init');
   }
 
-  fullname(event) {
+  fullname(event: any) {
     console.log('Fullname:  ', this.name + ' ' + this.lastname);
   }
-  */
 }

@@ -7,11 +7,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class Test2Component {
   //Declaracion del input
-  @Input() name: string;
-  @Input() lastName: string;
+  @Input() name: string | undefined;
+  @Input() lastName: string | undefined;
 
   //Declaracion de output
-  @Output() onSendFullName = new EventEmitter(null);
+  @Output() onSendFullName = new EventEmitter(undefined);
 
   myvar1 = 4;
   myvar2 = 5;
@@ -24,16 +24,16 @@ export class Test2Component {
     this.onSendFullName.emit('General data ' + this.name + ' ' + this.lastName);
   }
 
-  test0(event) {
+  test0(event: any) {
     console.log('event click: ', event);
     console.log('Suma ', this.myvar1 + this.myvar2);
   }
 
-  test1(event) {
+  test1(event: any) {
     console.log('event blur: ', event);
   }
 
-  test2(event) {
+  test2(event: any) {
     console.log('event double click: ', event);
   }
 }

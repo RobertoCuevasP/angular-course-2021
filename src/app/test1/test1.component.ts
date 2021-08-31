@@ -9,7 +9,7 @@ export class Test1Component {
   //Declaracion del input
   @Input('status') statusTest: string = 'working';
   //Declaracion de output, le decimos que momento el evento saldra, ese output debe recibirse en una funcion
-  @Output() onSendData = new EventEmitter(null); //onSendData = nombre variable
+  @Output() onSendData = new EventEmitter(undefined); //onSendData = nombre variable
 
   constructor() {}
 
