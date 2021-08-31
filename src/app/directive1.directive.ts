@@ -14,7 +14,7 @@ import {
 export class Directive1Directive implements OnChanges {
   @Input() colorDirective: string = 'yellow';
 
-  @Output() outputTestDirective = new EventEmitter<any>(null);
+  @Output() outputTestDirective = new EventEmitter<any>(undefined);
 
   @HostListener('click') hostListenerOnClick() {
     this.element.nativeElement.style.backgroundColor = this.colorDirective;
