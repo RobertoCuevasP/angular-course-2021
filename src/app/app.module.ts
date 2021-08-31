@@ -60,6 +60,16 @@ const routes: Routes = [
       { path: 'home1', component: Home1Component },
       { path: 'home2', component: Home2Component }
     ]
+  },
+  {
+    path: 'admin-module',
+    loadChildren: () =>
+      import('./moduleNavigation/admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'home-module',
+    loadChildren: () =>
+      import('./moduleNavigation/home/home.module').then(m => m.HomeModule)
   }
 ];
 

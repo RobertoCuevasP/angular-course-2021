@@ -19,6 +19,6 @@ export class View2Component implements OnInit {
     });
 
     //console.log('snapshot', this.router.snapshot.params);
-    /console.log('snapshot', this.router.snapshot.queryParams);
+    //console.log('snapshot', this.router.snapshot.queryParams);
   }
 }
