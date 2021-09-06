@@ -1,0 +1,25 @@
+{
+  "publications": {
+    "p0001": {
+      "idUser": 123,
+      "description": "Hola Mundo",
+      "date": "02/09/2021",
+      "imageUrl": "http://firebase/img.jpg",
+      "userPhotoUrl": "http://firebase/user1.jpg"
+    },
+    "p0002": {
+      "idUser": 124,
+      "description": "Hola Mundo",
+      "date": "02/09/2021",
+      "imageUrl": "http://firebase/img.jpg",
+      "userPhotoUrl": "http://firebase/user1.jpg"
+    },
+    "p0003": {
+      "idUser": 123,
+      "description": "Hola Mundo",
+      "date": "02/09/2021",
+      "imageUrl": "http://firebase/img.jpg",
+      "userPhotoUrl": "http://firebase/user1.jpg"
+    }
+  }
+}
