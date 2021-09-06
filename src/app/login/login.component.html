@@ -9,6 +9,7 @@
 <app-login1></app-login1>
 <app-login2></app-login2>
 
+<p>--------------------------------------------------------------------</p>
 <p>Template Form</p>
 
 <form #formTemplate="ngForm" (ngSubmit)="onSubmitTemplate(formTemplate)">
@@ -17,3 +18,16 @@
   <input type="text" name="cc" ngModel>
   <button type="submit">Submit</button>
 </form>
+
+<p>--------------------------------------------------------------------</p>
+<p>Reactive Form</p>
+<input type="text" [formControl]="name">
+<button (click)="onShow()">Show</button>
+
+<div [formGroup]="formReactive">
+  <input type="text" formControlName="name">
+  <input type="text" formControlName="lastName">
+  <input type="text" formControlName="date">
+</div>
+
+<button (click)="showAll()">Show All</button>
