@@ -51,7 +51,19 @@ export class LoginComponent implements OnInit {
       .subscribe(res => console.log(res));
   }
 
+  patch() {
+    this.publicationService
+      .patch('p0001', {
+        description: 'Hola Mundo Update Testing using Patch'
+      })
+      .subscribe(res => console.log(res));
+  }
+
   delete() {
     this.publicationService.delete('p0002').subscribe(res => console.log(res));
+  }
+
+  onSubmitTemplate(values: any) {
+    console.log('Values', values);
   }
 }

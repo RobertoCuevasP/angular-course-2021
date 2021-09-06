@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   NgbModule,
   NgbButtonsModule,
@@ -26,7 +26,8 @@ const routes: Routes = [{ path: '', component: LoginComponent }];
     NgbToastModule,
     NgbButtonsModule,
     MatSliderModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   declarations: [LoginComponent, Login1Component, Login2Component],
   providers: [Test1Service, UtilsService, PublicationService]
