@@ -1,33 +1,24 @@
-<button (click)="onSetMessage()">Set Message</button>
-<button routerLink="../pages">Pages</button>
+<p>Login Component</p>
 
-<button (click)="create()">Create</button>
-<button (click)="delete()">Delete</button>
-<button (click)="update()">Update</button>
-<button (click)="patch()">Patch</button>
+<input type="text"
+       required
+       minlength="5"
+       maxlength="10"
+       [ngModel]="name"
+       #nameLocal="ngModel"
+>
 
-<app-login1></app-login1>
-<app-login2></app-login2>
+<div>{{nameLocal.errors | json}}</div>
 
-<p>--------------------------------------------------------------------</p>
-<p>Template Form</p>
+<div *ngIf="nameLocal.invalid && (nameLocal.touched || nameLocal.dirty)">
 
-<form #formTemplate="ngForm" (ngSubmit)="onSubmitTemplate(formTemplate)">
-  <input type="text" name="aa" ngModel>
-  <input type="text" name="bb" ngModel>
-  <input type="text" name="cc" ngModel>
-  <button type="submit">Submit</button>
-</form>
+  <div *ngIf="nameLocal.errors?.required">
+    Name is required
+  </div>
 
-<p>--------------------------------------------------------------------</p>
-<p>Reactive Form</p>
-<input type="text" [formControl]="name">
-<button (click)="onShow()">Show</button>
+  <div *ngIf="nameLocal.errors?.minlength">
+    Min length is required
+  </div>
 
-<div [formGroup]="formReactive">
-  <input type="text" formControlName="name">
-  <input type="text" formControlName="lastName">
-  <input type="text" formControlName="date">
+
 </div>
-
-<button (click)="showAll()">Show All</button>
