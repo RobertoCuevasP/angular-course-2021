@@ -1,9 +1,45 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TransactionsService } from './services/transactions.service';
+import { WalletsService } from './services/wallets.service';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <router-outlet></router-outlet>
-  `
+  templateUrl: './app.component.html'
 })
-export class AppComponent {}
+export class AppComponent {
+  wallets = [];
+  transactions = [];
+  walletSubs: Subscription;
+  transactionsSubs: Subscription;
+
+  constructor(
+    private walletsService: WalletsService,
+    private transactionsService: TransactionsService
+  ) {}
+
+  ngOnInit() {
+    this.loadTransaction();
+    this.loadWallet();
+  }
+
+  loadTransaction() {
+    this.transactions = [];
+    this.transactionsSubs = this.transactionsService
+      .getTransactions()
+      .subscribe(res => {
+        Object.entries(res).map((p: any) =>
+          this.transactions.push({ id: p[0], ...p[1] })
+        );
+      });
+  }
+
+  loadWallet() {
+    this.wallets = [];
+    this.walletSubs = this.walletsService.getWallets().subscribe(res => {
+      Object.entries(res).map((p: any) =>
+        this.wallets.push({ id: p[0], ...p[1] })
+      );
+    });
+  }
+}

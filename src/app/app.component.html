@@ -1,0 +1,22 @@
+<p>APP</p>
+
+<p>WALLETS</p>
+
+<div style="display: flex; flex-direction: row">
+  <div *ngFor="let wallet of wallets">
+    <app-wallet [data]="wallet">
+
+    </app-wallet>
+  </div>
+</div>
+
+<p>TRANSACTIONS</p>
+
+<div style="display: flex; flex-direction: row;">
+  <div *ngFor="let transaction of transactions; let i = index;">
+
+    <app-transaction [data]="transaction">
+
+    </app-transaction>
+  </div>
+</div>
