@@ -44,4 +44,19 @@ export class AppComponent {
   }
 
   mine() {}
+
+  totalCoin(t: string) {
+    return this.wallets.reduce(
+      (acc, value) => acc + (value[t] > 0 ? value[t] : 0),
+      0
+    );
+  }
+
+  transactionStatus(): boolean {
+    const aux = this.transactions.filter(
+      t => t.mineType === 'PoS' && t.miner < 20
+    );
+
+    return this.transactions.length === aux.length;
+  }
 }

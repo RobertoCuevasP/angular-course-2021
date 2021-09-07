@@ -1,11 +1,19 @@
-<p>APP</p>
+<p>2 - BITCOIN - ETHEREUM</p>
 
 <p>WALLETS</p>
+
+<div style="position:fixed; right:10px; top:2px; background-color:cyan;">
+  Total ETH: {{totalCoin('eth')}}
+  TOTAL BTC: {{totalCoin('btc')}}
+</div>
+
+<div *ngIf="transactionStatus()">
+  THERE ARE NOT TRANSACTIONS
+</div>
 
 <div style="display: flex; flex-direction: row">
   <div *ngFor="let wallet of wallets">
     <app-wallet [data]="wallet">
-
     </app-wallet>
   </div>
 </div>
