@@ -1,41 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class WalletsService {
+  baseUrl = environment.app.apiBaseUrl;
+
   constructor(private http: HttpClient) {}
 
   public getWallets(): Observable<any> {
-    return this.http.get(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/wallets.json`
-    );
+    return this.http.get(`${this.baseUrl}/wallets.json`);
   }
 
-  public createWallets(body: any): Observable<any> {
-    return this.http.post(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/wallets.json`,
-      body
-    );
+  public updateWallet(id: string, body: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/wallets/${id}.json`, body);
   }
 
-  public updateWallets(id: string, body: any): Observable<any> {
-    return this.http.put(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/wallets/${id}.json`,
-      body
-    );
+  public patchWallet(id: string, body: any): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/wallets/${id}.json`, body);
   }
 
-  public patchWallets(id: string, body: any): Observable<any> {
-    return this.http.patch(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/wallets/${id}.json`,
-      body
-    );
-  }
-
-  public deleteWallets(id: string): Observable<any> {
-    return this.http.delete(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/wallets/${id}.json`
-    );
+  public deleteWallet(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/wallets/${id}.json`);
   }
 }

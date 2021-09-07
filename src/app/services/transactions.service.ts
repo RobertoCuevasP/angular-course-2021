@@ -1,41 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class TransactionsService {
+  baseUrl = environment.app.apiBaseUrl;
+
   constructor(private http: HttpClient) {}
 
   public getTransactions(): Observable<any> {
-    return this.http.get(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/transactions.json`
-    );
-  }
-
-  public createTransaction(body: any): Observable<any> {
-    return this.http.post(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/transactions.json`,
-      body
-    );
+    return this.http.get(`${this.baseUrl}/transactions.json`);
   }
 
   public updateTransaction(id: string, body: any): Observable<any> {
-    return this.http.put(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/transactions.json/${id}.json`,
-      body
-    );
+    return this.http.put(`${this.baseUrl}/transactions/${id}.json`, body);
   }
 
   public patchTransaction(id: string, body: any): Observable<any> {
-    return this.http.patch(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/transactions.json/${id}.json`,
-      body
-    );
+    return this.http.patch(`${this.baseUrl}/transactions/${id}.json`, body);
   }
 
   public deleteTransaction(id: string): Observable<any> {
-    return this.http.delete(
-      `https://bitcoin-test-a0874-default-rtdb.firebaseio.com/transactions.json/${id}.json`
-    );
+    return this.http.delete(`${this.baseUrl}/transactions/${id}.json`);
   }
 }
