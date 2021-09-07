@@ -16,7 +16,7 @@
   <div *ngFor="let transaction of transactions; let i = index;">
 
     <app-transaction [data]="transaction">
-
+      <button [disabled]="transaction.mineType === 'PoS' && transaction.miner < 20" (click)="mine(transaction, i)"> Mine</button>
     </app-transaction>
   </div>
 </div>
