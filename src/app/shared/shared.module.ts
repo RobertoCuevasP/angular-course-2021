@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from './loader/loader.component';
-import { CardComponent } from './card/card.component';
-import { PurePipe } from './pipes/pure.pipe';
-import { ImpurePipe } from './pipes/impure.pipe';
+import { Shared2Directive } from './shared2.directive';
+import { Shared1Component } from './shared1/shared1.component';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [LoaderComponent, CardComponent, PurePipe, ImpurePipe],
-  exports: [LoaderComponent, CardComponent, PurePipe, ImpurePipe]
+  declarations: [Shared2Directive, Shared1Component],
+  exports: [Shared1Component, Shared2Directive]
 })
 export class SharedModule {}
