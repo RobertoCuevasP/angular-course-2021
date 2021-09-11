@@ -22,3 +22,27 @@
 
 
 </div>
+
+
+<p>--------------- Reactive Form Validation--------------</p>
+
+<div [formGroup]="formReactive">
+  <label for="name">Name</label>
+  <input type="text" formControlName="name">
+  <div *ngIf="getValue('name')?.invalid && (getValue('name')?.touched || getValue('name')?.dirty)">
+    <div *ngIf="getValue('name')?.errors?.required">
+      Name is required
+    </div>
+
+    <div *ngIf="getValue('name')?.errors?.minlength">
+      Min length is 3
+    </div>
+  </div>
+  <label for="name">Last Name</label>
+  <input type="text" formControlName="lastName">
+  <div *ngIf="getValue('lastName')?.invalid && (getValue('lastName')?.touched || getValue('lastName')?.dirty)">
+    <div *ngIf="getValue('lastName')?.errors?.required">
+      Name is required
+    </div>
+
+  </div>
