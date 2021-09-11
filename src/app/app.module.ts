@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { SingletonService } from './login/services/singleton.service';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
