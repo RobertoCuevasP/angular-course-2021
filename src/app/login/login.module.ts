@@ -13,12 +13,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './components/register/register.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [{ path: '', component: LoginComponent }];
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, TestComponent],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [
     MatProgressSpinnerModule,
     NgbToastModule,
@@ -33,6 +32,7 @@ const routes: Routes = [{ path: '', component: LoginComponent }];
     MatButtonModule,
     MatDialogModule
   ],
-  providers: [AuthService]
+  providers: [AuthService],
+  exports: [RegisterComponent]
 })
 export class LoginModule {}

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-
-import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterComponent } from './components/register/register.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +10,15 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private matDialog: MatDialog) {}
+  constructor(
+    private authService: AuthService,
+    private matDialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   login(form: any) {
-    console.log('Form: ', form.value);
-
     this.authService
       .login({
         email: form.value.email,
@@ -25,11 +26,12 @@ export class LoginComponent implements OnInit {
         returnSecureToken: true
       })
       .subscribe(res => {
-        console.log('Response', res);
+        console.log('RESPONSE', res);
+        this.router.navigate(['pages']);
       });
   }
 
-  onCreateNewAccount(): void {
+  onCreateNewAccount() {
     this.matDialog.open(RegisterComponent);
   }
 }
