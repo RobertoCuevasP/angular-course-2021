@@ -1,27 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
-import { PublicationService } from './services/publication.service';
-import { SingletonService } from './services/singleton.service';
-import { Test1Service } from './services/test1.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   name: string = '';
 
   formReactive: FormGroup;
+
   constructor(private formBuilder: FormBuilder) {
     this.formReactive = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      lastName: ['', Validators.required]
+      lastName: ['', [Validators.required]]
     });
   }
 
