@@ -7,7 +7,7 @@ import {
   HttpParams
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { AuthService } from '../../login/services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
@@ -23,8 +23,6 @@ export class AuthInterceptor implements HttpInterceptor {
     if (token) {
       let params = new HttpParams();
       params = params.append('auth', token);
-
-      //console.log('PARAMS', params)
 
       request = request.clone({
         url: `${request.url}`,
