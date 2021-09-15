@@ -15,7 +15,11 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.authService.verifyLogged()) {
+      this.router.navigate(['pages']);
+    }
+  }
 
   login(form: any) {
     this.authService

@@ -9,6 +9,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -31,10 +32,19 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(
-      catchError((err: any) => {
-        console.log('ERROR', err);
+      catchError((err: HttpErrorResponse) => {
+        console.log('ERROR', err.status);
+        if (err.status === 401) {
+          this.handler401Error();
+        }
+
         return throwError('ERROR EXTRA');
       })
     );
+  }
+
+  private handler401Error(): Observable<any> {
+    this.authService.logout();
+    return throwError('Error 401');
   }
 }
