@@ -96,6 +96,10 @@
     .material-icons:hover {
       cursor: pointer;
     }
+
+    button + button {
+      margin-left: 10px;
+    }
   }
 
   .user__avatar {
