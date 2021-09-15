@@ -9,7 +9,15 @@ export class PublicationService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<any> {
+  public getAll(): Observable<any> {
     return this.http.get(`${this.url}/publications.json`);
+  }
+
+  public getAllById(id: string) {
+    return this.http.get(
+      `${
+        this.url
+      }/publications.json?orderBy="idUser"&equalTo="${id}"&print=pretty`
+    );
   }
 }
