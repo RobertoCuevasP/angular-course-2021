@@ -19,8 +19,8 @@
   <div *ngFor="let persona of noVacunados; let i = index">
     <app-no-vacunados [info]="persona">
       <button
-        [disabled]="persona.disease == true || persona.age < 18"
-        (click)="vacunarPersona(persona, i)"
+        [disabled]="persona.disease == true || persona.age < 12"
+        (click)="vaccine(persona)"
       >
         Vaccinate
       </button>

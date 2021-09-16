@@ -9,10 +9,8 @@ import { VacunadosService } from './core/services/vacunados.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  vacunados = [];
-  noVacunados = [];
-  subsVacunados: Subscription;
-  subsNoVacunados: Subscription;
+  vacunados: any[] = [];
+  noVacunados: any[] = [];
 
   constructor(
     private noVacunadosService: NoVacunadosService,
@@ -20,34 +18,39 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
-    this.datosVacunados();
-    this.datosNoVacunados();
+    this.loadVaccinated();
+    this.loadNotVaccinated();
   }
 
-  datosVacunados() {
+  loadVaccinated() {
     this.vacunados = [];
-    this.subsVacunados = this.vacunadosService
-      .listVacunados()
-      .subscribe((data) => {
-        Object.entries(data).map((d: any) =>
-          this.vacunados.push({ id: d[0], ...d[1] })
-        );
-      });
+
+    this.vacunadosService.getAll().subscribe(
+      (res) =>
+        (this.vacunados = Object.entries(res).map((s: any) => ({
+          id: s[0],
+          ...s[1],
+        })))
+    );
   }
 
-  datosNoVacunados() {
+  loadNotVaccinated() {
     this.noVacunados = [];
-    this.subsNoVacunados = this.noVacunadosService
-      .listNoVacunados()
-      .subscribe((data) => {
-        Object.entries(data).map((d: any) =>
-          this.noVacunados.push({ id: d[0], ...d[1] })
-        );
-      });
+
+    this.noVacunadosService.getAll().subscribe(
+      (res) =>
+        (this.noVacunados = Object.entries(res).map((s: any) => ({
+          id: s[0],
+          ...s[1],
+        })))
+    );
   }
 
-  todosEstanVacunados() {
-    return this.noVacunados.length === 0;
+  todosEstanVacunados(): boolean {
+    const aux = this.noVacunados.filter(
+      (t) => (t.disease === false || t.disease === 'false') && t.age >= 12
+    );
+    return aux.length === 0;
   }
 
   totalDeVacunas(type: number) {
@@ -58,29 +61,52 @@ export class AppComponent {
     }
   }
 
-  vacunarPersona(persona: any, i: number): void {
-    const ind = this.noVacunados.findIndex((x) => x.name === persona.name);
-    const aumenta: any = persona.doses++;
+  vaccine(persona: any): void {
+    const vaccinatedAux = this.noVacunados.find((x) => x.name === persona.name);
 
-    this.noVacunadosService.patchNoVacunados(this.noVacunados[ind].id, {
-      doses: aumenta,
-    });
+    console.log('Before: ', vaccinatedAux.doses);
+
+    vaccinatedAux[persona.doses] = persona.doses++;
+
+    this.noVacunadosService
+      .patchNoVacunados(vaccinatedAux.id, vaccinatedAux)
+      .subscribe((res) => this.loadNotVaccinated());
 
     const tipoDeVacuna: string = persona.vaccineType;
-    console.log('tipoDeVacuna', tipoDeVacuna);
-    if (
-      tipoDeVacuna === 'A' ||
-      (tipoDeVacuna === 'B' && aumenta === 2) ||
-      (tipoDeVacuna === 'C' && aumenta === 3)
-    ) {
-      this.vacunadosService.postVacunados({
-        name: persona.name,
-        age: persona.age,
-        date: persona.date,
-        vaccined: 1,
-      });
+    console.log(persona.vaccineType);
+    console.log('After ', vaccinatedAux.doses);
+    console.log('Id', vaccinatedAux.id);
 
-      this.noVacunadosService.deleteNoVacunados(this.noVacunados[ind].id);
+    if (tipoDeVacuna === 'A') {
+      this.createVaccinated(persona);
+      this.deletingVaccinated(vaccinatedAux.id);
     }
+
+    if (tipoDeVacuna === 'B' && vaccinatedAux.doses >= 2) {
+      this.createVaccinated(persona);
+      this.deletingVaccinated(vaccinatedAux.id);
+    }
+
+    if (tipoDeVacuna === 'C' && vaccinatedAux.doses >= 3) {
+      this.createVaccinated(persona);
+      this.deletingVaccinated(vaccinatedAux.id);
+    }
+  }
+
+  createVaccinated(person: any) {
+    this.vacunadosService
+      .postVacunados({
+        name: person.name,
+        age: person.age,
+        date: person.date,
+        vaccined: 1,
+      })
+      .subscribe((res) => this.loadVaccinated());
+  }
+
+  deletingVaccinated(id: string) {
+    this.noVacunadosService
+      .deleteNoVacunados(id)
+      .subscribe((res) => this.loadNotVaccinated());
   }
 }

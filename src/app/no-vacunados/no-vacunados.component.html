@@ -1,7 +1,7 @@
 <div style="border: 1px solid black;" [style.background]="'red'">
-  <p>name: {{ info.name | uppercase }}</p>
+  <p>name: {{ info.name | titlecase }}</p>
   <p>age: {{ info.age }}</p>
-  <p>date: {{ info.date | date: 'dd/MM/yyy' }}</p>
+  <p>date: {{ info.date | date: 'yyy/MM/dd' }}</p>
   <p>disease: {{ info.disease }}</p>
   <p>vaccineType: {{ info.vaccineType }}</p>
   <p>vaccined: {{ info.vaccined }}</p>
