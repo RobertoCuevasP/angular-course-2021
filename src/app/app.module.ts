@@ -1,31 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoreModule } from './core/core.module';
-
-const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-  },
-  {
-    path: 'pages',
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
-  }
-];
+import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NoVacunadosService } from './core/services/no-vacunados.service';
+import { VacunadosService } from './core/services/vacunados.service';
+import { CommonModule } from '@angular/common';
+import { VacunadosComponent } from './vacunados/vacunados.component';
+import { NoVacunadosComponent } from './no-vacunados/no-vacunados.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
-    CoreModule
+  declarations: [AppComponent, VacunadosComponent, NoVacunadosComponent],
+  imports: [BrowserModule, CommonModule, HttpClientModule],
+  providers: [
+    NoVacunadosService,
+    VacunadosService,
+    VacunadosComponent,
+    NoVacunadosComponent,
   ],
-  bootstrap: [AppComponent]
+
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

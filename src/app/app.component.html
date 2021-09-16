@@ -1,0 +1,29 @@
+<div *ngIf="todosEstanVacunados()">EVERYBODY VACCINATED</div>
+
+<p>--------------------------------------------</p>
+
+<p>------- 1. VACUNADOS</p>
+<p>VACCINATED:{{ totalDeVacunas(0) }}</p>
+
+<div style="display: flex; flex-direction: row">
+  <div *ngFor="let persona of vacunados">
+    <app-vacunados [info]="persona"> </app-vacunados>
+  </div>
+</div>
+
+<p>--- NO VACUNADOS</p>
+
+<p>NOT VACCINATED:{{ totalDeVacunas(1) }}</p>
+
+<div style="display: flex">
+  <div *ngFor="let persona of noVacunados; let i = index">
+    <app-no-vacunados [info]="persona">
+      <button
+        [disabled]="persona.disease == true || persona.age < 18"
+        (click)="vacunarPersona(persona, i)"
+      >
+        Vaccinate
+      </button>
+    </app-no-vacunados>
+  </div>
+</div>
