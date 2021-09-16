@@ -1,25 +1,20 @@
 {
   "publications": {
-    "p0001": {
+    "-Miwzh8xnReDcESiBx_6": {
+      "category": "work",
+      "date": "17/82/2021",
+      "description": "soy nuevo",
       "idUser": "PpqxlvrfhRcELvyb8IY6wjyQR5x2",
-      "description": "Hola Mundo",
-      "date": "02/09/2021",
-      "imageUrl": "http://firebase/img.jpg",
-      "userPhotoUrl": "http://firebase/user1.jpg"
+      "imageUrl": "http://fitebase/img.jpg",
+      "userPhotoUrl": "http://fitebase/user1.jpg"
     },
-    "p0002": {
-      "idUser": 124,
-      "description": "Hola Mundo",
-      "date": "02/09/2021",
-      "imageUrl": "http://firebase/img.jpg",
-      "userPhotoUrl": "http://firebase/user1.jpg"
-    },
-    "p0003": {
-      "idUser": 123,
-      "description": "Hola Mundo",
-      "date": "02/09/2021",
-      "imageUrl": "http://firebase/img.jpg",
-      "userPhotoUrl": "http://firebase/user1.jpg"
+    "-MiwznqItZPETiI9B1DG": {
+      "category": "entertainment",
+      "date": "17/82/2021",
+      "description": "soy nuevo",
+      "idUser": 2,
+      "imageUrl": "http://fitebase/img.jpg",
+      "userPhotoUrl": "http://fitebase/user1.jpg"
     }
   }
 }

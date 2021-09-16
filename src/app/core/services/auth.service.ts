@@ -45,8 +45,7 @@ export class AuthService {
 
   public verifyLogged(): boolean {
     const token = localStorage.getItem('token');
-
-    //token ? true : false
+    // token ? true : false
     return !!token;
   }
 
