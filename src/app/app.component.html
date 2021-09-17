@@ -1,8 +1,6 @@
 <div *ngIf="todosEstanVacunados()">EVERYBODY VACCINATED</div>
 
-<p>--------------------------------------------</p>
-
-<p>------- 1. VACUNADOS</p>
+<p>1. VACUNADOS</p>
 <p>VACCINATED:{{ totalDeVacunas(0) }}</p>
 
 <div style="display: flex; flex-direction: row">
@@ -11,13 +9,16 @@
   </div>
 </div>
 
-<p>--- NO VACUNADOS</p>
+<p>NO VACUNADOS</p>
 
 <p>NOT VACCINATED:{{ totalDeVacunas(1) }}</p>
 
 <div style="display: flex">
   <div *ngFor="let persona of noVacunados; let i = index">
-    <app-no-vacunados [info]="persona">
+    <app-no-vacunados
+      [info]="persona"
+      (edit)="onEdit(persona); addMode = false"
+    >
       <button
         [disabled]="persona.disease == true || persona.age < 12"
         (click)="vaccine(persona)"
@@ -27,3 +28,14 @@
     </app-no-vacunados>
   </div>
 </div>
+
+<mat-drawer
+  #drawer
+  [opened]="true"
+  style="width: 300px; height: 100%;"
+  mode="side"
+  [position]="'end'"
+>
+  <app-form [values]="formValues" (sentForm)="onSave($event); addMode = true">
+  </app-form>
+</mat-drawer>

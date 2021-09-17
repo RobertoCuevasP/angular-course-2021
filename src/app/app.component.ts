@@ -9,6 +9,18 @@ import { VacunadosService } from './core/services/vacunados.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  addMode = true;
+  idEdit: any;
+
+  formValues: any = {
+    name: '',
+    age: '',
+    date: '',
+    disease: '',
+    vaccineType: '',
+    doses: '',
+  };
+
   vacunados: any[] = [];
   noVacunados: any[] = [];
 
@@ -108,5 +120,30 @@ export class AppComponent {
     this.noVacunadosService
       .deleteNoVacunados(id)
       .subscribe((res) => this.loadNotVaccinated());
+  }
+
+  onEdit(product): void {
+    this.idEdit = product.id;
+    this.formValues = product;
+  }
+
+  onSave(data): void {
+    if (this.addMode) {
+      this.noVacunadosService
+        .postNoVacunados({
+          name: data.name,
+          age: data.age,
+          date: new Date(),
+          disease: data.disease,
+          vaccineType: data.vaccineType,
+          vaccined: 0,
+          doses: 0,
+        })
+        .subscribe(() => this.loadNotVaccinated());
+    } else {
+      this.noVacunadosService
+        .patchNoVacunados(this.idEdit, data)
+        .subscribe(() => this.loadNotVaccinated);
+    }
   }
 }
